@@ -1,0 +1,37 @@
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    gap: 20px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+input[type="text"]{
+    font-size: 15px;
+}
+
+div.display {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+div.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 10px solid lightpink;
+    border-radius: 5px;
+    font-size: 20px;
+}
