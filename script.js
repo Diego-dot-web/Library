@@ -58,19 +58,24 @@ form.addEventListener("submit", (evt)=> {
     container.appendChild(checkRead);
 
     deleteBooks()
-
-    
 });
 
 function deleteBooks() {
     const deleteBtns = document.querySelectorAll(".deleteBtn");
-    
+
+
     deleteBtns.forEach(btn => {
         btn.setAttribute("id", `${btn.parentElement.parentElement.id}`);
     
         btn.addEventListener("click", ()=>{
-            btn.parentElement.parentElement.remove()
+            btn.parentElement.parentElement.remove();
         });
+        
+        const cards = display.children;
     
+        for (const card of cards) {
+            if (Number(card.id) > 0) card.id = Number(card.id) - 1
+        }
     });
+
 }
