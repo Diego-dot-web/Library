@@ -5,7 +5,7 @@ const form = document.querySelector("#yourBooks");
 const myLibrary = [];
 
 // the constructor
-function Book(name, author, pages, read, code) {
+function Book(name, author, pages, read) {
     this.name = name;
     this.author = author;
     this.pages = pages;
@@ -63,19 +63,35 @@ form.addEventListener("submit", (evt)=> {
 function deleteBooks() {
     const deleteBtns = document.querySelectorAll(".deleteBtn");
 
+    deleteBtns.forEach((btn) => {
+        btn.removeEventListener("click", handleDelete);
+    });
+    
+    deleteBtns.forEach((btn, i) => {
+        btn.setAttribute("id", `${i}`);
+        btn.addEventListener("click", handleDelete);
+    });
+    
+}
 
-    deleteBtns.forEach(btn => {
-        btn.setAttribute("id", `${btn.parentElement.parentElement.id}`);
-    
-        btn.addEventListener("click", ()=>{
-            btn.parentElement.parentElement.remove();
-        });
-        
-        const cards = display.children;
-    
-        for (const card of cards) {
-            if (Number(card.id) > 0) card.id = Number(card.id) - 1
-        }
+function handleDelete() {
+    const index = parseInt(this.id);
+    this.parentElement.parentElement.remove();
+    console.log("1");
+    reduceNumberId(index);
+}
+
+function reduceNumberId(index) {
+    myLibrary.splice(index, 1)
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach((card, i) => {
+        card.setAttribute("id", `${i}`);
     });
 
+    const deleteBtn = document.querySelectorAll(".deleteBtn");
+
+    deleteBtn.forEach((btn, i) => {
+        btn.setAttribute("id", `${i}`)
+    });
 }
