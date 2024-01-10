@@ -23,7 +23,13 @@ form.addEventListener("submit", (evt)=> {
     let name = document.querySelector("#name").value;
     let author = document.querySelector("#author").value;
     let pages = document.querySelector("#pages").value;
-    let read = document.querySelector("#read").value;
+    let read;
+
+    if(document.querySelector("#read").checked){
+        read = "Read";
+    } else {
+        read = "Not read yet"
+    }
     
     let item = new Book(name, author, pages, read);
 
@@ -46,18 +52,17 @@ form.addEventListener("submit", (evt)=> {
     clearBtn.className = "deleteBtn";
     container.appendChild(clearBtn);
 
-    const checkReadLabel = document.createElement("label");
-    checkReadLabel.textContent = "Read";
-    checkReadLabel.className = "checkReadLabel";
-    container.appendChild(checkReadLabel);
-
-    const checkRead = document.createElement("input");
-    checkRead.type = "checkbox"
-    checkRead.textContent = "Read";
+    const checkRead = document.createElement("button");
+    if(read === "Read"){
+        checkRead.textContent = "Read";
+    } else {
+        checkRead.textContent = "Not read"
+    }
     checkRead.className = "checkRead";
     container.appendChild(checkRead);
 
-    deleteBooks()
+    deleteBooks();
+    checkStatus();
 });
 
 function deleteBooks() {
@@ -77,7 +82,6 @@ function deleteBooks() {
 function handleDelete() {
     const index = parseInt(this.id);
     this.parentElement.parentElement.remove();
-    console.log("1");
     reduceNumberId(index);
 }
 
@@ -95,3 +99,29 @@ function reduceNumberId(index) {
         btn.setAttribute("id", `${i}`)
     });
 }
+
+function checkStatus(){
+    const checkBtns = document.querySelectorAll(".checkRead");
+
+    checkBtns.forEach(btn => {
+        btn.removeEventListener("click", handleUpdate)
+    });
+
+    checkBtns.forEach(btn => {
+        btn.addEventListener("click", handleUpdate);
+    })
+}
+
+function handleUpdate(){
+    const index = this.parentElement.parentElement.id;
+    const card = myLibrary[index];
+
+    if(card.read === "Read") {
+        this.textContent = "Not Read"
+        card.read = "Not Read"
+    } else {
+        this.textContent = "Read"
+        card.read = "Read"
+    }
+}
+
