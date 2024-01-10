@@ -55,14 +55,17 @@ form.addEventListener("submit", (evt)=> {
     const checkRead = document.createElement("button");
     if(read === "Read"){
         checkRead.textContent = "Read";
+        checkRead.style.backgroundColor = "#9fff9c";
     } else {
         checkRead.textContent = "Not read"
+        checkRead.style.backgroundColor = "#ff9c9c"
     }
     checkRead.className = "checkRead";
     container.appendChild(checkRead);
 
     deleteBooks();
     checkStatus();
+    form.reset();
 });
 
 function deleteBooks() {
@@ -119,8 +122,10 @@ function handleUpdate(){
     if(card.read === "Read") {
         this.textContent = "Not Read"
         card.read = "Not Read"
+        this.style.backgroundColor = "#ff9c9c"
     } else {
         this.textContent = "Read"
         card.read = "Read"
+        this.style.backgroundColor = "#9fff9c";
     }
 }

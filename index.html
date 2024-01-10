@@ -7,27 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="" id="yourBooks">
-        <div>
-            <label for="name">Name Of the Book</label>
-            <input type="text" id="name" value="name">
-        </div>
+    <div class="main">
 
-        <div>
-            <label for="author">Name Of the Author of the Book</label>
-            <input type="text" id="author" value="author">
-        </div>
-        <div>
-            <label for="pages">Number of Pages of the Book</label>
-            <input type="number" id="pages" value="50">
-        </div>
-        <div>
-            <label for="read">Read</label>
-            <input type="checkbox" id="read" value="Read">
-        </div>
-        <button type="submit">Add Book</button>
-
-    </form>
+        <form action="" id="yourBooks">
+            <div>
+                <label for="name">Name Of the Book</label>
+                <input type="text" id="name" placeholder="For Example: Romeo and Julieta" required>
+            </div>
+    
+            <div>
+                <label for="author">Name Of the Author of the Book</label>
+                <input type="text" id="author" placeholder="For Example: William Shakespare" required>
+            </div>
+            <div>
+                <label for="pages">Number of Pages of the Book</label>
+                <input type="number" id="pages" placeholder="For Example: 400" required>
+            </div>
+            <div>
+                <label for="read">Read</label>
+                <input type="checkbox" id="read">
+            </div>
+            <button type="submit">Add Book</button>
+    
+        </form>
+    </div>
     <div class="display"></div>
     <script src="script.js"></script>
 </body>
