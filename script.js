@@ -124,4 +124,3 @@ function handleUpdate(){
         card.read = "Read"
     }
 }
-
