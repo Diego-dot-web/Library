@@ -5,12 +5,14 @@ const form = document.querySelector("#yourBooks");
 const myLibrary = [];
 
 // the constructor
-function Book(name, author, pages, read) {
-    this.name = name;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-};
+class Book {
+    constructor(name, author, pages, read){
+        this.name = name;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+}
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
