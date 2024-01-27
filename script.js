@@ -131,3 +131,28 @@ function handleUpdate(){
         this.style.backgroundColor = "#9fff9c";
     }
 }
+
+const nameInput = document.querySelector("#name");
+const textInput = document.querySelector("#author");
+const pageInput = document.querySelector("#pages");
+const nameError = document.querySelector(".nameError");
+
+function checkValidation(){
+
+    nameInput.addEventListener("input", ()=> {
+        if(nameInput.validity.valid){
+            nameError.textContent = ""
+        } 
+
+        showError()
+    })
+
+}
+
+function showError() {
+    if (nameInput.validity.tooShort){
+        nameError.textContent = "Errorrrrrrr"
+    }
+}
+
+checkValidation();
